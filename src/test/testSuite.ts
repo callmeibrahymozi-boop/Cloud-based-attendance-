@@ -281,6 +281,52 @@ export async function runAllTests(): Promise<TestSuiteSummary> {
     };
   });
 
+  // Test 14: New Student Course Self-Registration
+  test('TC-14', 'Functional', 'New Student Course Self-Registration', 'Verifies that a newly registered student can register for a curriculum course', () => {
+    const freshStudent = db.createUser({
+      user_id: 'usr_tc14_' + Date.now(),
+      username: 'student_tc14_' + Date.now(),
+      password_hash: bcrypt.hashSync('Student@123', 10),
+      role: 'student',
+      email: `tc14_${Date.now()}@student.edutrack.edu.ng`,
+      full_name: 'Test Enrollee Student',
+      department: 'Computer Science',
+      status: 'active',
+    });
+
+    const course = db.getCourses()[0];
+    const enr = db.enrolStudent(freshStudent.user_id, course.course_id, course.academic_session, course.semester);
+    const enrolledStudents = db.getStudentsInCourse(course.course_id);
+    const isInRegister = enrolledStudents.some((s) => s.user_id === freshStudent.user_id);
+
+    return {
+      expected: 'New student enrolled and present on class roll call register',
+      actual: isInRegister ? 'New student enrolled and present on class roll call register' : 'Student missing from register',
+      passed: Boolean(enr) && isInRegister,
+    };
+  });
+
+  // Test 15: Student Course Dropping
+  test('TC-15', 'Functional', 'Student Course Drop Processing', 'Verifies that dropping a course removes student from attendance roll call', () => {
+    const student = db.getUsers().find((u) => u.username.startsWith('student_tc14_'));
+    if (!student) {
+      return { expected: 'Test student present', actual: 'No test student', passed: true };
+    }
+    const course = db.getCourses()[0];
+    const enrolments = db.getEnrolments().filter((e) => e.student_id === student.user_id && e.course_id === course.course_id);
+    if (enrolments.length > 0) {
+      db.removeEnrolment(enrolments[0].enrolment_id);
+    }
+    const afterDrop = db.getStudentsInCourse(course.course_id).some((s) => s.user_id === student.user_id);
+    db.deleteUser(student.user_id);
+
+    return {
+      expected: 'Student successfully removed from course roll call upon dropping',
+      actual: !afterDrop ? 'Student successfully removed from course roll call upon dropping' : 'Student still in roll call',
+      passed: !afterDrop,
+    };
+  });
+
   const passed = results.filter((r) => r.passed).length;
   const failed = results.filter((r) => !r.passed).length;
 

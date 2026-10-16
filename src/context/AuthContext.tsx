@@ -6,6 +6,15 @@ interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   login: (identifier: string, password: string) => Promise<void>;
+  registerStudent: (studentData: {
+    username: string;
+    password: string;
+    email: string;
+    full_name: string;
+    matric_no: string;
+    department: string;
+    phone?: string;
+  }) => Promise<void>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
   quickLogin: (accountKey: 'admin' | 'dr_okonkwo' | 'prof_adeyemi' | 'ibrahim_musa' | 'ngozi_eze') => Promise<void>;
@@ -66,6 +75,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const registerStudent = async (studentData: {
+    username: string;
+    password: string;
+    email: string;
+    full_name: string;
+    matric_no: string;
+    department: string;
+    phone?: string;
+  }) => {
+    setIsLoading(true);
+    try {
+      const data = await api.post<{ success: boolean; token: string; user: User }>('/auth/register-student', studentData);
+      if (data.token) {
+        setToken(data.token);
+        setUser(data.user);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const logout = async () => {
     try {
       await api.post('/auth/logout');
@@ -97,6 +127,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         user,
         isLoading,
         login,
+        registerStudent,
         logout,
         refreshUser,
         quickLogin,

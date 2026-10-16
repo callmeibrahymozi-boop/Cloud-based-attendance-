@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { api } from '../../api';
 import { Course, CourseReportStudent, CourseReportMeta } from '../../types';
 import { Badge } from '../../components/common/Badge';
 import { StatCard } from '../../components/common/StatCard';
-import { generateCourseAttendanceReportPDF } from '../../utils/pdfGenerator';
+import { generateCourseAttendanceReportPDF, CourseFilterState } from '../../utils/pdfGenerator';
 import {
   FileText,
   Download,
@@ -13,6 +13,9 @@ import {
   CheckCircle2,
   AlertTriangle,
   Calendar,
+  Search,
+  Filter,
+  RotateCcw,
 } from 'lucide-react';
 
 export const LecturerReportsPage: React.FC = () => {
@@ -22,6 +25,12 @@ export const LecturerReportsPage: React.FC = () => {
   const [students, setStudents] = useState<CourseReportStudent[]>([]);
   const [loading, setLoading] = useState(false);
   const [exporting, setExporting] = useState<'excel' | 'pdf' | null>(null);
+
+  // Filter States
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [eligibilityFilter, setEligibilityFilter] = useState<'all' | 'Eligible' | 'Warning' | 'Ineligible'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -42,11 +51,16 @@ export const LecturerReportsPage: React.FC = () => {
     if (!selectedCourseId) return;
     setLoading(true);
     try {
+      const params = new URLSearchParams({ course_id: selectedCourseId });
+      if (startDate) params.append('start_date', startDate);
+      if (endDate) params.append('end_date', endDate);
+
       const res = await api.get<{
         success: boolean;
         meta: CourseReportMeta;
         students: CourseReportStudent[];
-      }>(`/reports/course?course_id=${selectedCourseId}`);
+      }>(`/reports/course?${params.toString()}`);
+
       if (res.success) {
         setReportMeta(res.meta);
         setStudents(res.students);
@@ -60,7 +74,72 @@ export const LecturerReportsPage: React.FC = () => {
 
   useEffect(() => {
     fetchReport();
-  }, [selectedCourseId]);
+  }, [selectedCourseId, startDate, endDate]);
+
+  // Client-side filter for student search and eligibility status
+  const filteredStudents = useMemo(() => {
+    let list = students;
+
+    if (eligibilityFilter !== 'all') {
+      list = list.filter((s) => s.exam_status === eligibilityFilter);
+    }
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter(
+        (s) =>
+          s.full_name.toLowerCase().includes(q) ||
+          s.matric_no.toLowerCase().includes(q) ||
+          s.department.toLowerCase().includes(q)
+      );
+    }
+
+    return list;
+  }, [students, eligibilityFilter, searchQuery]);
+
+  const handleResetFilters = () => {
+    setStartDate('');
+    setEndDate('');
+    setEligibilityFilter('all');
+    setSearchQuery('');
+  };
+
+  const hasActiveFilters = Boolean(
+    startDate || endDate || eligibilityFilter !== 'all' || searchQuery
+  );
+
+  const handleDownloadPdf = () => {
+    if (!selectedCourseId || !reportMeta || filteredStudents.length === 0) return;
+    setExporting('pdf');
+    try {
+      const activeFilters: CourseFilterState = {
+        startDate: startDate || undefined,
+        endDate: endDate || undefined,
+        eligibility:
+          eligibilityFilter === 'Eligible'
+            ? 'Eligible (>= 75%)'
+            : eligibilityFilter === 'Warning'
+            ? 'Warning (65% - 74%)'
+            : eligibilityFilter === 'Ineligible'
+            ? 'Ineligible (< 65%)'
+            : 'All Enrolled Students',
+        search: searchQuery.trim() || undefined,
+      };
+
+      generateCourseAttendanceReportPDF(reportMeta, filteredStudents, activeFilters);
+    } catch (err: any) {
+      console.error('jsPDF generation error:', err);
+      // Fallback
+      api.downloadBlob(
+        `/reports/export/pdf?course_id=${selectedCourseId}`,
+        `${reportMeta.course_code}_Attendance_Report.pdf`
+      ).catch((fetchErr) => {
+        alert(`Export error: ${fetchErr.message}`);
+      });
+    } finally {
+      setExporting(null);
+    }
+  };
 
   const handleExportExcel = async () => {
     if (!selectedCourseId || !reportMeta) return;
@@ -77,24 +156,15 @@ export const LecturerReportsPage: React.FC = () => {
     }
   };
 
-  const handleDownloadPdf = () => {
-    if (!selectedCourseId || !reportMeta || students.length === 0) return;
-    setExporting('pdf');
-    try {
-      generateCourseAttendanceReportPDF(reportMeta, students);
-    } catch (err: any) {
-      console.error('jsPDF generation error:', err);
-      // Fallback to server endpoint if needed
-      api.downloadBlob(
-        `/reports/export/pdf?course_id=${selectedCourseId}`,
-        `${reportMeta.course_code}_Attendance_Report.pdf`
-      ).catch((fetchErr) => {
-        alert(`Export error: ${fetchErr.message}`);
-      });
-    } finally {
-      setExporting(null);
-    }
-  };
+  // Recalculated metrics for the currently filtered roster
+  const filteredAverage =
+    filteredStudents.length > 0
+      ? Math.round(
+          (filteredStudents.reduce((acc, s) => acc + s.percentage, 0) / filteredStudents.length) * 10
+        ) / 10
+      : 0;
+  const filteredEligibleCount = filteredStudents.filter((s) => s.exam_status === 'Eligible').length;
+  const filteredAtRiskCount = filteredStudents.filter((s) => s.exam_status !== 'Eligible').length;
 
   return (
     <div className="space-y-6">
@@ -103,11 +173,11 @@ export const LecturerReportsPage: React.FC = () => {
         <div>
           <h1 className="text-xl font-bold text-slate-900">Course Attendance Reports</h1>
           <p className="text-xs text-slate-500">
-            Official class registers, exam eligibility compliance, and genuine PDF/Excel generation.
+            Official class registers, exam eligibility compliance, and formatted PDF/Excel document generation.
           </p>
         </div>
 
-        {/* Export Buttons */}
+        {/* Action Buttons */}
         <div className="flex items-center gap-2">
           <button
             onClick={handleExportExcel}
@@ -119,9 +189,9 @@ export const LecturerReportsPage: React.FC = () => {
           </button>
           <button
             onClick={handleDownloadPdf}
-            disabled={!reportMeta || exporting !== null || students.length === 0}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-700 text-white rounded-lg text-xs font-semibold hover:bg-blue-800 disabled:opacity-50 transition-colors shadow-xs"
-            title="Download official course attendance document as PDF"
+            disabled={!reportMeta || exporting !== null || filteredStudents.length === 0}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-700 text-white rounded-lg text-xs font-bold hover:bg-blue-800 disabled:opacity-50 transition-colors shadow-xs"
+            title="Download formatted course attendance document as PDF based on current filter state"
           >
             <Download className="h-4 w-4" />
             <FileText className="h-4 w-4" />
@@ -130,20 +200,110 @@ export const LecturerReportsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Course Selector */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-3">
-        <label className="text-xs font-bold text-slate-700 shrink-0">Select Course:</label>
-        <select
-          value={selectedCourseId}
-          onChange={(e) => setSelectedCourseId(e.target.value)}
-          className="text-xs border border-slate-300 rounded-lg p-2 bg-white max-w-md focus:ring-2 focus:ring-blue-600 font-medium"
-        >
-          {courses.map((c) => (
-            <option key={c.course_id} value={c.course_id}>
-              {c.course_code} - {c.course_title} ({c.academic_session})
-            </option>
-          ))}
-        </select>
+      {/* Filter and Selection Toolbar */}
+      <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+            <Filter className="h-3.5 w-3.5 text-blue-600" />
+            Report Parameters & Attendance Filters
+          </span>
+          {hasActiveFilters && (
+            <button
+              onClick={handleResetFilters}
+              className="text-xs font-semibold text-rose-600 hover:text-rose-800 flex items-center gap-1"
+            >
+              <RotateCcw className="h-3.5 w-3.5" />
+              Reset Filters
+            </button>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {/* Course Selector */}
+          <div>
+            <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+              Select Course
+            </label>
+            <select
+              value={selectedCourseId}
+              onChange={(e) => setSelectedCourseId(e.target.value)}
+              className="w-full text-xs border border-slate-300 rounded-lg p-2 bg-white font-medium"
+            >
+              {courses.map((c) => (
+                <option key={c.course_id} value={c.course_id}>
+                  {c.course_code} - {c.course_title}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Exam Eligibility Filter */}
+          <div>
+            <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+              Exam Eligibility
+            </label>
+            <select
+              value={eligibilityFilter}
+              onChange={(e) => setEligibilityFilter(e.target.value as any)}
+              className="w-full text-xs border border-slate-300 rounded-lg p-2 bg-white"
+            >
+              <option value="all">All Enrolled Students</option>
+              <option value="Eligible">Eligible (&gt;= 75%)</option>
+              <option value="Warning">Warning (65% - 74%)</option>
+              <option value="Ineligible">Ineligible (&lt; 65%)</option>
+            </select>
+          </div>
+
+          {/* Lecture Date Range */}
+          <div>
+            <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+              Class Date Range
+            </label>
+            <div className="flex items-center gap-1.5">
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-1/2 text-xs border border-slate-300 rounded-lg p-1.5 bg-white"
+                title="Start Date"
+              />
+              <span className="text-slate-400 text-xs">to</span>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-1/2 text-xs border border-slate-300 rounded-lg p-1.5 bg-white"
+                title="End Date"
+              />
+            </div>
+          </div>
+
+          {/* Student Search */}
+          <div>
+            <label className="text-[11px] font-semibold text-slate-600 block mb-1">
+              Search Student
+            </label>
+            <div className="relative">
+              <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Name, matric number..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg bg-white"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-100">
+          <span>
+            Showing <strong>{filteredStudents.length}</strong> of {students.length} students enrolled in {reportMeta?.course_code}.
+          </span>
+          <span className="text-[11px] text-blue-700 font-medium">
+            PDF report will format this filtered student roster.
+          </span>
+        </div>
       </div>
 
       {reportMeta && (
@@ -158,25 +318,25 @@ export const LecturerReportsPage: React.FC = () => {
               color="blue"
             />
             <StatCard
-              title="Average Attendance"
-              value={`${reportMeta.average_attendance}%`}
-              subtitle={`Threshold: ${reportMeta.min_required_percentage}%`}
+              title="Filtered Avg Attendance"
+              value={`${filteredAverage}%`}
+              subtitle={`Required: ${reportMeta.min_required_percentage}%`}
               icon={Percent}
-              color={reportMeta.average_attendance >= 75 ? 'emerald' : 'amber'}
+              color={filteredAverage >= 75 ? 'emerald' : 'amber'}
             />
             <StatCard
               title="Eligible for Exam"
-              value={reportMeta.eligible_count}
-              subtitle="Met >= 75% attendance criterion"
+              value={`${filteredEligibleCount}/${filteredStudents.length}`}
+              subtitle="Met >= 75% criterion"
               icon={CheckCircle2}
               color="emerald"
             />
             <StatCard
               title="Students at Risk"
-              value={reportMeta.at_risk_count}
-              subtitle="Below minimum requirement"
+              value={filteredAtRiskCount}
+              subtitle="Below 75% threshold"
               icon={AlertTriangle}
-              color={reportMeta.at_risk_count > 0 ? 'rose' : 'slate'}
+              color={filteredAtRiskCount > 0 ? 'rose' : 'slate'}
             />
           </div>
 
@@ -216,14 +376,14 @@ export const LecturerReportsPage: React.FC = () => {
                         Calculating course metrics...
                       </td>
                     </tr>
-                  ) : students.length === 0 ? (
+                  ) : filteredStudents.length === 0 ? (
                     <tr>
                       <td colSpan={10} className="py-10 text-center text-slate-400">
-                        No students enrolled in this course.
+                        No students match the active filter criteria. Try adjusting your search or filters.
                       </td>
                     </tr>
                   ) : (
-                    students.map((st, idx) => (
+                    filteredStudents.map((st, idx) => (
                       <tr key={st.student_id} className="hover:bg-slate-50 transition-colors">
                         <td className="py-3 px-4 text-slate-400">{idx + 1}</td>
                         <td className="py-3 px-4 font-mono font-medium text-slate-700">

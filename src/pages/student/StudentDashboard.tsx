@@ -111,6 +111,28 @@ export const StudentDashboard: React.FC<{ setActiveTab: (tab: string) => void }>
         </div>
       </div>
 
+      {/* New Student Onboarding Alert Banner */}
+      {courses.length === 0 && (
+        <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+          <div className="flex items-start gap-3">
+            <BookOpen className="h-5 w-5 text-blue-700 shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-bold text-blue-950 text-sm">Course Registration Required</h4>
+              <p className="mt-0.5 text-blue-800">
+                You are not registered in any course registers for the current semester. Please register your curriculum courses to appear on your lecturers' class roll call registers.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => setActiveTab('student-courses')}
+            className="shrink-0 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg text-xs flex items-center gap-1.5 shadow-xs transition-colors"
+          >
+            <span>Register Courses Now</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      )}
+
       {/* Low Attendance Warning Alert Banner */}
       {low_attendance_warnings.length > 0 && (
         <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-3 shadow-2xs">
@@ -185,60 +207,77 @@ export const StudentDashboard: React.FC<{ setActiveTab: (tab: string) => void }>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {courses.map((course) => (
-            <div
-              key={course.course_id}
-              className="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 flex flex-col justify-between"
+        {courses.length === 0 ? (
+          <div className="py-8 text-center bg-slate-50 rounded-xl border border-dashed border-slate-200 p-6 space-y-2">
+            <BookOpen className="h-8 w-8 text-blue-600 mx-auto" />
+            <h4 className="text-xs font-bold text-slate-800">No Courses Registered Yet</h4>
+            <p className="text-[11px] text-slate-500 max-w-sm mx-auto">
+              You are not yet registered for any courses this semester. Register now to be included in attendance records and track your examination eligibility.
+            </p>
+            <button
+              onClick={() => setActiveTab('student-courses')}
+              className="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-bold shadow-xs transition-colors"
             >
-              <div>
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                    {course.course_code}
-                  </span>
-                  <Badge status={course.exam_status} size="sm" />
-                </div>
-                <h4 className="mt-2 text-xs font-bold text-slate-900 line-clamp-1">
-                  {course.course_title}
-                </h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">{course.lecturer_name || 'Unassigned'}</p>
-
-                {/* Progress bar */}
-                <div className="mt-4">
-                  <div className="flex justify-between text-xs font-semibold mb-1">
-                    <span className="text-slate-600">Attendance:</span>
-                    <span className={course.percentage >= 75 ? 'text-emerald-700' : 'text-rose-700'}>
-                      {course.percentage}%
+              <BookOpen className="h-3.5 w-3.5" />
+              <span>Browse & Register Courses</span>
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {courses.map((course) => (
+              <div
+                key={course.course_id}
+                className="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-start justify-between">
+                    <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                      {course.course_code}
                     </span>
+                    <Badge status={course.exam_status} size="sm" />
                   </div>
-                  <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full ${
-                        course.percentage >= 75 ? 'bg-emerald-600' : 'bg-rose-500'
-                      }`}
-                      style={{ width: `${Math.min(100, course.percentage)}%` }}
-                    />
-                  </div>
-                </div>
+                  <h4 className="mt-2 text-xs font-bold text-slate-900 line-clamp-1">
+                    {course.course_title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{course.lecturer_name || 'Unassigned'}</p>
 
-                <div className="mt-3 grid grid-cols-3 text-center text-[11px] pt-2 border-t border-slate-200/60">
-                  <div>
-                    <span className="text-slate-400">Recorded</span>
-                    <p className="font-bold text-slate-700">{course.total_recorded}</p>
+                  {/* Progress bar */}
+                  <div className="mt-4">
+                    <div className="flex justify-between text-xs font-semibold mb-1">
+                      <span className="text-slate-600">Attendance:</span>
+                      <span className={course.percentage >= 75 ? 'text-emerald-700' : 'text-rose-700'}>
+                        {course.percentage}%
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full ${
+                          course.percentage >= 75 ? 'bg-emerald-600' : 'bg-rose-500'
+                        }`}
+                        style={{ width: `${Math.min(100, course.percentage)}%` }}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-emerald-600">Present</span>
-                    <p className="font-bold text-emerald-700">{course.present + course.late}</p>
-                  </div>
-                  <div>
-                    <span className="text-rose-600">Absent</span>
-                    <p className="font-bold text-rose-700">{course.absent}</p>
+
+                  <div className="mt-3 grid grid-cols-3 text-center text-[11px] pt-2 border-t border-slate-200/60">
+                    <div>
+                      <span className="text-slate-400">Recorded</span>
+                      <p className="font-bold text-slate-700">{course.total_recorded}</p>
+                    </div>
+                    <div>
+                      <span className="text-emerald-600">Present</span>
+                      <p className="font-bold text-emerald-700">{course.present + course.late}</p>
+                    </div>
+                    <div>
+                      <span className="text-rose-600">Absent</span>
+                      <p className="font-bold text-rose-700">{course.absent}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Recent Roll Call Activity */}

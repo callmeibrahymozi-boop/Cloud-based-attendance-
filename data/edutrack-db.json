@@ -194,7 +194,20 @@
       "phone": "+2349162275555",
       "status": "active",
       "created_at": "2026-10-16T13:23:29.366Z",
-      "updated_at": "2026-10-16T13:23:29.366Z"
+      "updated_at": "2026-10-16T17:35:42.055Z"
+    },
+    {
+      "user_id": "usr_fresh_std",
+      "username": "fresh_student",
+      "password_hash": "$2b$10$6PyiO3Ws8ghuhp0tzoTnZuVyzKNeWkvyK76imwaO896DJAfqZfwAS",
+      "role": "student",
+      "email": "fresh@student.edutrack.edu.ng",
+      "full_name": "Fresh Student",
+      "department": "Computer Science",
+      "matric_no": "SCI/2026/9999",
+      "status": "active",
+      "created_at": "2026-10-16T17:44:09.127Z",
+      "updated_at": "2026-10-16T17:44:09.127Z"
     }
   ],
   "departments": [
@@ -1098,9 +1111,126 @@
       "token": "vpfaevph3kdmvb06ylp",
       "expires_at": "2026-10-16T14:28:35.245Z",
       "used": true
+    },
+    {
+      "token_id": "tok_s6g5qzp",
+      "user_id": "usr_std_1",
+      "token": "s07s7azgjicmvb92kzb",
+      "expires_at": "2026-10-16T18:37:07.511Z",
+      "used": true
     }
   ],
   "audit_logs": [
+    {
+      "user_id": "usr_lecturer_1",
+      "username": "dr_okonkwo",
+      "role": "lecturer",
+      "action": "USER_LOGIN",
+      "details": "User dr_okonkwo (lecturer) logged in successfully",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_hjduye46",
+      "timestamp": "2026-10-16T17:41:19.959Z"
+    },
+    {
+      "user_id": "usr_std_1",
+      "username": "ibrahim_musa",
+      "role": "student",
+      "action": "USER_LOGOUT",
+      "details": "User ibrahim_musa logged out",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_0urglltj",
+      "timestamp": "2026-10-16T17:40:44.396Z"
+    },
+    {
+      "user_id": "usr_std_1",
+      "username": "ibrahim_musa",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User ibrahim_musa (student) logged in successfully",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_b4a25x6o",
+      "timestamp": "2026-10-16T17:40:10.078Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User Ibrahymu (student) logged in successfully",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_e0aygxfd",
+      "timestamp": "2026-10-16T17:39:00.916Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_LOGOUT",
+      "details": "User admin logged out",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_hrfrmn70",
+      "timestamp": "2026-10-16T17:38:58.968Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TEST_RUN",
+      "details": "Automated evaluation suite executed",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_aj4a81jy",
+      "timestamp": "2026-10-16T17:37:07.512Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_UPDATED",
+      "details": "Updated details for user Ibrahymu",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_qxab3psr",
+      "timestamp": "2026-10-16T17:35:42.056Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin (admin) logged in successfully",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_heb7xtjg",
+      "timestamp": "2026-10-16T17:35:18.299Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "role": "student",
+      "action": "USER_LOGOUT",
+      "details": "User Ibrahymu logged out",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_m67ugpa5",
+      "timestamp": "2026-10-16T17:35:15.086Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User Ibrahymu (student) logged in successfully",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_tqtvdfth",
+      "timestamp": "2026-10-16T17:34:55.592Z"
+    },
+    {
+      "user_id": "usr_lecturer_2",
+      "username": "prof_adeyemi",
+      "role": "lecturer",
+      "action": "USER_LOGOUT",
+      "details": "User prof_adeyemi logged out",
+      "ip_address": "102.91.72.222, 169.254.169.126",
+      "log_id": "log_4icpxqwg",
+      "timestamp": "2026-10-16T17:34:53.035Z"
+    },
     {
       "user_id": "usr_admin",
       "username": "admin",

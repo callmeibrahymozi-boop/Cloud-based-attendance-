@@ -61,8 +61,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const studentNav = [
     { id: 'dashboard', label: 'Student Dashboard', icon: LayoutDashboard },
-    { id: 'my-attendance', label: 'My Attendance', icon: UserCheck },
-    { id: 'student-courses', label: 'Registered Courses', icon: FolderKanban },
+    { id: 'my-attendance', label: 'My Attendance Logs', icon: UserCheck },
+    { id: 'student-courses', label: 'Course Registration', icon: FolderKanban },
     { id: 'student-corrections', label: 'Correction Requests', icon: CheckSquare },
   ];
 

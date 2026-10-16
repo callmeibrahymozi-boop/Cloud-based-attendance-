@@ -30,13 +30,29 @@ export interface InstitutionalReportCourse {
   attendance_rate: number;
 }
 
+export interface InstitutionalFilterState {
+  department?: string;
+  startDate?: string;
+  endDate?: string;
+  compliance?: string;
+  search?: string;
+}
+
+export interface CourseFilterState {
+  startDate?: string;
+  endDate?: string;
+  eligibility?: string;
+  search?: string;
+}
+
 /**
  * Generates and triggers download of a professional Institutional Attendance Audit PDF
+ * strictly formatted according to current filter state.
  */
 export function generateInstitutionalReportPDF(
   summary: InstitutionalReportSummary,
   courses: InstitutionalReportCourse[],
-  deptFilter?: string
+  filters?: InstitutionalFilterState
 ) {
   // Use Landscape for wide multi-column institutional tables
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
@@ -48,7 +64,7 @@ export function generateInstitutionalReportPDF(
   doc.rect(0, 0, pageWidth, 24, 'F');
 
   // Accent Gold/Yellow Stripe
-  doc.setFillColor(245, 158, 11);
+  doc.setFillColor(245, 158, 11); // Amber 500
   doc.rect(0, 24, pageWidth, 1.5, 'F');
 
   // Institution Title
@@ -57,53 +73,100 @@ export function generateInstitutionalReportPDF(
   doc.setFont('helvetica', 'bold');
   doc.text((summary.institution || 'EDUTRACK CLOUD ATTENDANCE MANAGEMENT SYSTEM').toUpperCase(), 14, 11);
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont('helvetica', 'normal');
   doc.text(
-    'OFFICE OF ACADEMIC AFFAIRS & REGISTRY • INSTITUTIONAL ATTENDANCE AUDIT & COMPLIANCE REPORT',
+    'OFFICE OF ACADEMIC AFFAIRS & REGISTRY • OFFICIAL INSTITUTIONAL ATTENDANCE AUDIT & COMPLIANCE REPORT',
     14,
     18
   );
 
+  // Build filter description text
+  const filterParts: string[] = [];
+  if (filters?.department) filterParts.push(`Dept: ${filters.department}`);
+  else filterParts.push('Dept: All Departments');
+
+  if (filters?.startDate || filters?.endDate) {
+    filterParts.push(`Date Range: ${filters.startDate || 'Start'} to ${filters.endDate || 'End'}`);
+  }
+  if (filters?.compliance && filters.compliance !== 'all') {
+    filterParts.push(`Status: ${filters.compliance}`);
+  }
+  if (filters?.search) {
+    filterParts.push(`Search: "${filters.search}"`);
+  }
+
+  const filterString = filterParts.join('  |  ');
+
   // Subheader / Report Meta Block
   doc.setTextColor(51, 65, 85);
-  doc.setFontSize(8.5);
+  doc.setFontSize(8);
   const genDate = new Date(summary.generated_at).toLocaleString();
-  const filterText = deptFilter ? `Filtered by Department: ${deptFilter}` : 'Scope: All Institutional Departments';
-  doc.text(`Generated: ${genDate}  |  ${filterText}  |  Session: 2025/2026 (First Semester)`, 14, 32);
+  doc.text(`Generated: ${genDate}  |  Session: 2025/2026 (First Semester)`, 14, 30);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Active Filter State: ${filterString}`, 14, 34.5);
+
+  // Calculate dynamic KPI metrics for the filtered set
+  const filteredCoursesCount = courses.length;
+  const filteredTotalRecords = courses.reduce((acc, c) => acc + c.total_records, 0);
+  const filteredTotalPresent = courses.reduce((acc, c) => acc + c.present_count, 0);
+  const filteredTotalLate = courses.reduce((acc, c) => acc + c.late_count, 0);
+  const filteredTotalAbsent = courses.reduce((acc, c) => acc + c.absent_count, 0);
+  const filteredAvgRate =
+    filteredCoursesCount > 0
+      ? Math.round(
+          (courses.reduce((acc, c) => acc + c.attendance_rate, 0) / filteredCoursesCount) * 10
+        ) / 10
+      : 0;
 
   // KPI Summary Boxes
-  const kpiY = 36;
+  const kpiY = 38;
   const kpiBoxWidth = (pageWidth - 28 - 15) / 4;
-  const kpiBoxHeight = 16;
+  const kpiBoxHeight = 15;
 
   const kpis = [
-    { label: 'Overall Attendance', value: `${summary.overall_attendance_rate}%`, sub: 'All verified records' },
-    { label: 'On-Time Present', value: `${summary.present_percentage}%`, sub: 'Marked on-time' },
-    { label: 'Late Arrival Rate', value: `${summary.late_percentage}%`, sub: 'Tardy roll-call entries' },
-    { label: 'Absenteeism Rate', value: `${summary.absent_percentage}%`, sub: 'Unexcused missed classes' },
+    {
+      label: 'Filtered Avg Rate',
+      value: `${filteredAvgRate}%`,
+      sub: `${filteredCoursesCount} matching courses`,
+    },
+    {
+      label: 'On-Time Present',
+      value: `${summary.present_percentage}%`,
+      sub: `${filteredTotalPresent} present marks`,
+    },
+    {
+      label: 'Late Arrivals',
+      value: `${summary.late_percentage}%`,
+      sub: `${filteredTotalLate} late entries`,
+    },
+    {
+      label: 'Absenteeism',
+      value: `${summary.absent_percentage}%`,
+      sub: `${filteredTotalAbsent} unexcused missed`,
+    },
   ];
 
   kpis.forEach((kpi, i) => {
     const x = 14 + i * (kpiBoxWidth + 5);
     doc.setFillColor(248, 250, 252);
     doc.setDrawColor(226, 232, 240);
-    doc.roundedRect(x, kpiY, kpiBoxWidth, kpiBoxHeight, 2, 2, 'FD');
+    doc.roundedRect(x, kpiY, kpiBoxWidth, kpiBoxHeight, 1.5, 1.5, 'FD');
 
-    doc.setFontSize(7.5);
+    doc.setFontSize(7);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(100, 116, 139);
-    doc.text(kpi.label.toUpperCase(), x + 4, kpiY + 5);
+    doc.text(kpi.label.toUpperCase(), x + 3.5, kpiY + 4.5);
 
-    doc.setFontSize(11);
+    doc.setFontSize(10.5);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(30, 58, 138);
-    doc.text(kpi.value, x + 4, kpiY + 11);
+    doc.text(kpi.value, x + 3.5, kpiY + 10);
 
-    doc.setFontSize(6.5);
+    doc.setFontSize(6);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(148, 163, 184);
-    doc.text(kpi.sub, x + 4, kpiY + 14.5);
+    doc.text(kpi.sub, x + 3.5, kpiY + 13.5);
   });
 
   // Table Data Preparation
@@ -124,7 +187,7 @@ export function generateInstitutionalReportPDF(
 
   // Generate Table using autoTable
   autoTable(doc, {
-    startY: 56,
+    startY: 57,
     head: [
       [
         '#',
@@ -226,16 +289,19 @@ export function generateInstitutionalReportPDF(
     pageHeight - 6
   );
 
-  const cleanFilename = `Institutional_Attendance_Report_${new Date().toISOString().split('T')[0]}.pdf`;
+  const deptTag = filters?.department ? filters.department.replace(/\s+/g, '_') : 'All';
+  const cleanFilename = `Institutional_Attendance_Report_${deptTag}_${new Date().toISOString().split('T')[0]}.pdf`;
   doc.save(cleanFilename);
 }
 
 /**
  * Generates and triggers download of a professional Course Attendance Register & Report PDF
+ * strictly formatted according to current filter state.
  */
 export function generateCourseAttendanceReportPDF(
   meta: CourseReportMeta,
-  students: CourseReportStudent[]
+  students: CourseReportStudent[],
+  filters?: CourseFilterState
 ) {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -255,7 +321,7 @@ export function generateCourseAttendanceReportPDF(
   doc.setFont('helvetica', 'bold');
   doc.text(meta.institution.toUpperCase(), 14, 11);
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont('helvetica', 'normal');
   doc.text('OFFICIAL COURSE ATTENDANCE REGISTER & EXAM ELIGIBILITY REPORT', 14, 18);
 
@@ -263,32 +329,75 @@ export function generateCourseAttendanceReportPDF(
   doc.setTextColor(30, 41, 59);
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
-  doc.text(`${meta.course_code}: ${meta.course_title}`, 14, 33);
+  doc.text(`${meta.course_code}: ${meta.course_title}`, 14, 32);
 
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(71, 85, 105);
   doc.text(
     `Lecturer: ${meta.lecturer_name}  |  Department: ${meta.department}  |  Credit Units: ${meta.credit_unit}`,
     14,
-    38
+    37
   );
   doc.text(
     `Academic Session: ${meta.session}  |  Semester: ${meta.semester}  |  Generated: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
     14,
-    43
+    41.5
   );
 
+  // Build filter state text
+  const filterParts: string[] = [];
+  if (filters?.startDate || filters?.endDate) {
+    filterParts.push(`Date Range: ${filters.startDate || 'Start'} to ${filters.endDate || 'End'}`);
+  } else {
+    filterParts.push('Date: Full Semester (All Recorded Classes)');
+  }
+
+  if (filters?.eligibility && filters.eligibility !== 'all') {
+    filterParts.push(`Status: ${filters.eligibility}`);
+  }
+  if (filters?.search) {
+    filterParts.push(`Search: "${filters.search}"`);
+  }
+
+  const filterString = filterParts.join('  |  ');
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(51, 65, 85);
+  doc.text(`Active Filter State: ${filterString}`, 14, 46);
+
+  // Recalculate metrics for the filtered set of students
+  const filteredStudentsCount = students.length;
+  const filteredEligible = students.filter((s) => s.exam_status === 'Eligible').length;
+  const filteredAtRisk = students.filter((s) => s.exam_status !== 'Eligible').length;
+  const filteredAvgAttendance =
+    filteredStudentsCount > 0
+      ? Math.round(
+          (students.reduce((acc, s) => acc + s.percentage, 0) / filteredStudentsCount) * 10
+        ) / 10
+      : 0;
+
   // Summary Metrics Bar
-  const kpiY = 47;
+  const kpiY = 49.5;
   const kpiWidth = (pageWidth - 28 - 9) / 4;
-  const kpiHeight = 15;
+  const kpiHeight = 14;
 
   const kpis = [
-    { label: 'Lectures Held', val: meta.total_classes_held.toString(), sub: 'Recorded sessions' },
-    { label: 'Avg Attendance', val: `${meta.average_attendance}%`, sub: `Req. ${meta.min_required_percentage}%` },
-    { label: 'Eligible for Exam', val: meta.eligible_count.toString(), sub: 'Met threshold' },
-    { label: 'Students at Risk', val: meta.at_risk_count.toString(), sub: 'Ineligible warning' },
+    { label: 'Lectures Held', val: meta.total_classes_held.toString(), sub: 'In reporting scope' },
+    {
+      label: 'Filtered Avg',
+      val: `${filteredAvgAttendance}%`,
+      sub: `Req. ${meta.min_required_percentage}%`,
+    },
+    {
+      label: 'Eligible for Exam',
+      val: `${filteredEligible}/${filteredStudentsCount}`,
+      sub: 'Met 75% criterion',
+    },
+    {
+      label: 'Students at Risk',
+      val: filteredAtRisk.toString(),
+      sub: 'Ineligible warning',
+    },
   ];
 
   kpis.forEach((kpi, i) => {
@@ -297,20 +406,20 @@ export function generateCourseAttendanceReportPDF(
     doc.setDrawColor(226, 232, 240);
     doc.roundedRect(x, kpiY, kpiWidth, kpiHeight, 1.5, 1.5, 'FD');
 
-    doc.setFontSize(7);
+    doc.setFontSize(6.5);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(100, 116, 139);
-    doc.text(kpi.label.toUpperCase(), x + 3, kpiY + 4.5);
+    doc.text(kpi.label.toUpperCase(), x + 3, kpiY + 4);
 
-    doc.setFontSize(10.5);
+    doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(30, 58, 138);
-    doc.text(kpi.val, x + 3, kpiY + 10);
+    doc.text(kpi.val, x + 3, kpiY + 9);
 
-    doc.setFontSize(6);
+    doc.setFontSize(5.5);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(148, 163, 184);
-    doc.text(kpi.sub, x + 3, kpiY + 13.5);
+    doc.text(kpi.sub, x + 3, kpiY + 12.5);
   });
 
   // Table Data
@@ -328,7 +437,7 @@ export function generateCourseAttendanceReportPDF(
   ]);
 
   autoTable(doc, {
-    startY: 66,
+    startY: 67,
     head: [['#', 'Matric No', 'Student Name', 'Department', 'Total', 'Present', 'Late', 'Absent', 'Rate', 'Exam Status']],
     body: tableRows,
     theme: 'grid',

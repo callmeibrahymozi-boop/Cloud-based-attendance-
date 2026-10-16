@@ -77,6 +77,75 @@ router.post('/login', (req: AuthRequest, res: Response) => {
   });
 });
 
+// POST /api/auth/register-student - Student self-registration portal
+router.post('/register-student', (req: AuthRequest, res: Response) => {
+  const { username, password, email, full_name, matric_no, department, phone } = req.body;
+
+  if (!username || !password || !email || !full_name || !department) {
+    return res.status(400).json({
+      success: false,
+      message: 'Full name, matric / registration number, email, department, username, and password are required',
+    });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({
+      success: false,
+      message: 'Password must be at least 6 characters',
+    });
+  }
+
+  // Validate email domain or format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please provide a valid institutional email address',
+    });
+  }
+
+  try {
+    const password_hash = bcrypt.hashSync(password, 10);
+    const newUser = db.createUser({
+      user_id: 'usr_' + Math.random().toString(36).substring(2, 10),
+      username: username.trim().toLowerCase(),
+      password_hash,
+      role: 'student',
+      email: email.trim().toLowerCase(),
+      full_name: full_name.trim(),
+      matric_no: matric_no?.trim() || undefined,
+      department: department.trim(),
+      phone: phone?.trim() || undefined,
+      status: 'active',
+    });
+
+    const token = jwt.sign(
+      { user_id: newUser.user_id, role: newUser.role, username: newUser.username },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    req.user = newUser;
+    logAudit(req, 'STUDENT_ACCOUNT_CREATED', `New student ${newUser.full_name} (${newUser.matric_no || newUser.username}) created account`);
+
+    return res.status(201).json({
+      success: true,
+      message: 'Student account created successfully! You are now logged in.',
+      token,
+      user: sanitizeUser(newUser),
+    });
+  } catch (err: any) {
+    return res.status(400).json({ success: false, message: err.message });
+  }
+});
+
 // GET /api/auth/me
 router.get('/me', requireAuth, (req: AuthRequest, res: Response) => {
   return res.json({

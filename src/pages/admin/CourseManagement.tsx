@@ -125,8 +125,12 @@ export const CourseManagement: React.FC = () => {
     setShowEnrolModal(true);
     setStudentToEnrol('');
     try {
-      const res = await api.get<{ success: boolean; students: any[] }>(`/courses/${course.course_id}/students`);
+      const [res, stdRes] = await Promise.all([
+        api.get<{ success: boolean; students: any[] }>(`/courses/${course.course_id}/students`),
+        api.get<{ success: boolean; students: User[] }>('/users/students'),
+      ]);
       if (res.success) setEnrolledStudents(res.students);
+      if (stdRes.success) setStudents(stdRes.students);
     } catch (err: any) {
       setFeedback({ type: 'error', message: err.message });
     } finally {
