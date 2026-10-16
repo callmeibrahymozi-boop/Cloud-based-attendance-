@@ -1,0 +1,1316 @@
+{
+  "users": [
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "password_hash": "$2b$10$aC4zGX8E05FOhtrxfuOrJ.pj8uMcwt594AfuER4vcVFGc4720CSRu",
+      "role": "admin",
+      "email": "admin@edutrack.edu.ng",
+      "full_name": "Engr. Dr. Babatunde Balogun",
+      "matric_no": "STF/ADM/001",
+      "department": "Computer Science",
+      "phone": "+234 803 123 4567",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_lecturer_1",
+      "username": "dr_okonkwo",
+      "password_hash": "$2b$10$4nIwrvEkMrNS0KZMbc4fUOSU4qTD6o4A30G8Pwn2WTxWoEZ0qk.GW",
+      "role": "lecturer",
+      "email": "c.okonkwo@edutrack.edu.ng",
+      "full_name": "Dr. Chinua Okonkwo",
+      "matric_no": "STF/CSC/042",
+      "department": "Computer Science",
+      "phone": "+234 802 345 6789",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_lecturer_2",
+      "username": "prof_adeyemi",
+      "password_hash": "$2b$10$4nIwrvEkMrNS0KZMbc4fUOSU4qTD6o4A30G8Pwn2WTxWoEZ0qk.GW",
+      "role": "lecturer",
+      "email": "f.adeyemi@edutrack.edu.ng",
+      "full_name": "Prof. Folake Adeyemi",
+      "matric_no": "STF/SEN/018",
+      "department": "Software Engineering",
+      "phone": "+234 805 678 1234",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_1",
+      "username": "ibrahim_musa",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "i.musa@student.edutrack.edu.ng",
+      "full_name": "Ibrahim Musa",
+      "matric_no": "SCI/2022/1001",
+      "department": "Computer Science",
+      "phone": "+234 810 111 2233",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_2",
+      "username": "ngozi_eze",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "n.eze@student.edutrack.edu.ng",
+      "full_name": "Ngozi Eze",
+      "matric_no": "SCI/2022/1002",
+      "department": "Computer Science",
+      "phone": "+234 810 222 3344",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_3",
+      "username": "babatunde_adeleke",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "b.adeleke@student.edutrack.edu.ng",
+      "full_name": "Babatunde Adeleke",
+      "matric_no": "SCI/2022/1003",
+      "department": "Computer Science",
+      "phone": "+234 810 333 4455",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_4",
+      "username": "fatima_abubakar",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "f.abubakar@student.edutrack.edu.ng",
+      "full_name": "Fatima Abubakar",
+      "matric_no": "SCI/2022/1004",
+      "department": "Software Engineering",
+      "phone": "+234 810 444 5566",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_5",
+      "username": "chinedu_okafor",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "c.okafor@student.edutrack.edu.ng",
+      "full_name": "Chinedu Okafor",
+      "matric_no": "SCI/2022/1005",
+      "department": "Software Engineering",
+      "phone": "+234 810 555 6677",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_6",
+      "username": "zainab_bello",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "z.bello@student.edutrack.edu.ng",
+      "full_name": "Zainab Bello",
+      "matric_no": "SCI/2022/1006",
+      "department": "Computer Science",
+      "phone": "+234 810 666 7788",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_7",
+      "username": "emmanuel_danjuma",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "e.danjuma@student.edutrack.edu.ng",
+      "full_name": "Emmanuel Danjuma",
+      "matric_no": "SCI/2022/1007",
+      "department": "Computer Science",
+      "phone": "+234 810 777 8899",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_8",
+      "username": "aisha_umar",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "a.umar@student.edutrack.edu.ng",
+      "full_name": "Aisha Umar",
+      "matric_no": "SCI/2022/1008",
+      "department": "Software Engineering",
+      "phone": "+234 810 888 9900",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_9",
+      "username": "david_oshodi",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "d.oshodi@student.edutrack.edu.ng",
+      "full_name": "David Oshodi",
+      "matric_no": "SCI/2022/1009",
+      "department": "Computer Science",
+      "phone": "+234 810 999 0011",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_std_10",
+      "username": "grace_akpan",
+      "password_hash": "$2b$10$jDBji6iQnibzdLZ4vHRrj.UUiYHvz/JbQYlw2pH/pTkY5EBRYH0le",
+      "role": "student",
+      "email": "g.akpan@student.edutrack.edu.ng",
+      "full_name": "Grace Akpan",
+      "matric_no": "SCI/2022/1010",
+      "department": "Software Engineering",
+      "phone": "+234 810 000 1122",
+      "status": "active",
+      "created_at": "2026-10-16T09:45:56.026Z",
+      "updated_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "password_hash": "$2b$10$kxfnu0nvSMUm5tDL8xLN5uWVDjmuXTl9rLmr7Mx5hZB69J.wWzO0.",
+      "role": "student",
+      "email": "callmeibrahymozi@gmail.com",
+      "full_name": "Ibrahim Abdullahi",
+      "matric_no": "Cst24hnd0528",
+      "department": "Computer Science",
+      "phone": "+2349162275555",
+      "status": "active",
+      "created_at": "2026-10-16T13:23:29.366Z",
+      "updated_at": "2026-10-16T13:23:29.366Z"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_csc",
+      "name": "Computer Science",
+      "code": "CSC",
+      "faculty": "School of Computing"
+    },
+    {
+      "id": "dept_swe",
+      "name": "Software Engineering",
+      "code": "SEN",
+      "faculty": "School of Computing"
+    },
+    {
+      "id": "dept_cys",
+      "name": "Cyber Security",
+      "code": "CYS",
+      "faculty": "School of Computing"
+    },
+    {
+      "id": "dept_ift",
+      "name": "Information Technology",
+      "code": "IFT",
+      "faculty": "School of Computing"
+    }
+  ],
+  "courses": [
+    {
+      "course_id": "crs_csc401",
+      "course_code": "CSC 401",
+      "course_title": "Advanced Database Systems",
+      "credit_unit": 3,
+      "department": "Computer Science",
+      "lecturer_id": "usr_lecturer_1",
+      "academic_session": "2025/2026",
+      "semester": "First",
+      "created_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "course_id": "crs_sen405",
+      "course_code": "SEN 405",
+      "course_title": "Cloud Computing & Distributed Systems",
+      "credit_unit": 3,
+      "department": "Software Engineering",
+      "lecturer_id": "usr_lecturer_2",
+      "academic_session": "2025/2026",
+      "semester": "First",
+      "created_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "course_id": "crs_csc303",
+      "course_code": "CSC 303",
+      "course_title": "Systems Analysis & Design",
+      "credit_unit": 2,
+      "department": "Computer Science",
+      "lecturer_id": "usr_lecturer_1",
+      "academic_session": "2025/2026",
+      "semester": "First",
+      "created_at": "2026-10-16T09:45:56.026Z"
+    }
+  ],
+  "student_courses": [
+    {
+      "enrolment_id": "enr_csc401_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc401_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_sen405_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_csc303_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-16T09:45:56.026Z"
+    }
+  ],
+  "attendance": [
+    {
+      "attendance_id": "att_csc401_0_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_0_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-18",
+      "status": "Late",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-18T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Late",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_1_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-09-25T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Late",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_2_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-02",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-02T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_3",
+      "student_id": "usr_std_3",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Late",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Late",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_7",
+      "student_id": "usr_std_7",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_9",
+      "student_id": "usr_std_9",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Absent",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_csc401_3_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-10-09",
+      "status": "Present",
+      "session_period": "Morning",
+      "recorded_by": "usr_lecturer_1",
+      "recorded_at": "2026-10-09T10:30:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_0_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-22",
+      "status": "Absent",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-22T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Late",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_1_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-09-29",
+      "status": "Absent",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-09-29T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_1",
+      "student_id": "usr_std_1",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_2",
+      "student_id": "usr_std_2",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_4",
+      "student_id": "usr_std_4",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_5",
+      "student_id": "usr_std_5",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_6",
+      "student_id": "usr_std_6",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Late",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_8",
+      "student_id": "usr_std_8",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    },
+    {
+      "attendance_id": "att_sen405_2_10",
+      "student_id": "usr_std_10",
+      "course_id": "crs_sen405",
+      "attendance_date": "2026-10-06",
+      "status": "Present",
+      "session_period": "Afternoon",
+      "recorded_by": "usr_lecturer_2",
+      "recorded_at": "2026-10-06T15:15:00.000Z"
+    }
+  ],
+  "correction_requests": [
+    {
+      "request_id": "req_seed_1",
+      "student_id": "usr_std_7",
+      "attendance_id": "att_csc401_1_7",
+      "course_id": "crs_csc401",
+      "attendance_date": "2026-09-25",
+      "current_status": "Absent",
+      "requested_status": "Present",
+      "reason": "I submitted the in-class assignment slip but was marked absent during initial roll call.",
+      "status": "Pending",
+      "created_at": "2026-09-26T08:30:00.000Z"
+    }
+  ],
+  "password_reset_tokens": [
+    {
+      "token_id": "tok_lnu5qz3",
+      "user_id": "usr_std_1",
+      "token": "uwegr3h1rutmvas8mqz",
+      "expires_at": "2026-10-16T10:45:56.267Z",
+      "used": true
+    },
+    {
+      "token_id": "tok_k8f2f6d",
+      "user_id": "usr_std_1",
+      "token": "ye6tg7ycl6mvb00z3o",
+      "expires_at": "2026-10-16T14:23:55.956Z",
+      "used": true
+    },
+    {
+      "token_id": "tok_ynnpngw",
+      "user_id": "usr_std_1",
+      "token": "nh6d7rvwkbmvb01m0p",
+      "expires_at": "2026-10-16T14:24:25.657Z",
+      "used": true
+    },
+    {
+      "token_id": "tok_il5rhwb",
+      "user_id": "usr_std_1",
+      "token": "vpfaevph3kdmvb06ylp",
+      "expires_at": "2026-10-16T14:28:35.245Z",
+      "used": true
+    }
+  ],
+  "audit_logs": [
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TEST_RUN",
+      "details": "Automated evaluation suite executed",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_ishntkdw",
+      "timestamp": "2026-10-16T13:28:35.245Z"
+    },
+    {
+      "user_id": "usr_lecturer_2",
+      "username": "prof_adeyemi",
+      "role": "lecturer",
+      "action": "USER_LOGIN",
+      "details": "User prof_adeyemi (lecturer) logged in successfully",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_augxd8pi",
+      "timestamp": "2026-10-16T13:26:06.531Z"
+    },
+    {
+      "user_id": "usr_std_1",
+      "username": "ibrahim_musa",
+      "role": "student",
+      "action": "USER_LOGOUT",
+      "details": "User ibrahim_musa logged out",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_1p2xn259",
+      "timestamp": "2026-10-16T13:26:03.576Z"
+    },
+    {
+      "user_id": "usr_std_1",
+      "username": "ibrahim_musa",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User ibrahim_musa (student) logged in successfully",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_abxkq1lh",
+      "timestamp": "2026-10-16T13:25:39.151Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "role": "student",
+      "action": "USER_LOGOUT",
+      "details": "User Ibrahymu logged out",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_ie1tsb47",
+      "timestamp": "2026-10-16T13:25:36.633Z"
+    },
+    {
+      "user_id": "usr_2gdt2ft9",
+      "username": "Ibrahymu",
+      "role": "student",
+      "action": "USER_LOGIN",
+      "details": "User Ibrahymu (student) logged in successfully",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_i4da2njg",
+      "timestamp": "2026-10-16T13:25:07.600Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_LOGOUT",
+      "details": "User admin logged out",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_8xbxi1w1",
+      "timestamp": "2026-10-16T13:25:05.059Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TESTS_EXECUTED",
+      "details": "Executed 13 automated tests with 13 passes",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_t7mgy4vj",
+      "timestamp": "2026-10-16T13:24:25.658Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TEST_RUN",
+      "details": "Automated evaluation suite executed",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_y1j1bf5y",
+      "timestamp": "2026-10-16T13:24:25.658Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SETTINGS_UPDATED",
+      "details": "Updated institutional attendance configurations",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_r5wkniee",
+      "timestamp": "2026-10-16T13:24:20.176Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TESTS_EXECUTED",
+      "details": "Executed 13 automated tests with 13 passes",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_lwqpzro4",
+      "timestamp": "2026-10-16T13:23:55.957Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TEST_RUN",
+      "details": "Automated evaluation suite executed",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_95h1n9p7",
+      "timestamp": "2026-10-16T13:23:55.957Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_CREATED",
+      "details": "Created user Ibrahymu as student",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_4my7exwp",
+      "timestamp": "2026-10-16T13:23:29.367Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin (admin) logged in successfully",
+      "ip_address": "102.91.77.81, 169.254.169.126",
+      "log_id": "log_ty9dotmk",
+      "timestamp": "2026-10-16T13:22:46.930Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "USER_LOGIN",
+      "details": "User admin (admin) logged in successfully",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_bkxr20rp",
+      "timestamp": "2026-10-16T09:46:18.804Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_TEST_RUN",
+      "details": "Automated evaluation suite executed",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_ukyh0qbq",
+      "timestamp": "2026-10-16T09:45:56.267Z"
+    },
+    {
+      "log_id": "log_seed_1",
+      "user_id": "usr_admin",
+      "username": "admin",
+      "role": "admin",
+      "action": "SYSTEM_INITIALIZED",
+      "details": "EduTrack Cloud attendance database initialized with institutional demo records",
+      "ip_address": "127.0.0.1",
+      "timestamp": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "log_id": "log_seed_2",
+      "user_id": "usr_lecturer_1",
+      "username": "dr_okonkwo",
+      "role": "lecturer",
+      "action": "ATTENDANCE_RECORDED",
+      "details": "Recorded attendance for CSC 401 on 2026-10-09 (Morning) for 10 students",
+      "ip_address": "192.168.1.45",
+      "timestamp": "2026-10-09T10:45:00.000Z"
+    },
+    {
+      "log_id": "log_seed_3",
+      "user_id": "usr_lecturer_2",
+      "username": "prof_adeyemi",
+      "role": "lecturer",
+      "action": "ATTENDANCE_RECORDED",
+      "details": "Recorded attendance for SEN 405 on 2026-10-06 (Afternoon) for 7 students",
+      "ip_address": "192.168.1.88",
+      "timestamp": "2026-10-06T15:20:00.000Z"
+    }
+  ],
+  "academic_sessions": [
+    {
+      "id": "sess_1",
+      "session_name": "2024/2025",
+      "is_current": false
+    },
+    {
+      "id": "sess_2",
+      "session_name": "2025/2026",
+      "is_current": true
+    }
+  ],
+  "settings": {
+    "institution_name": "Kaduna Polytechnic",
+    "short_name": "Kadpoly",
+    "min_attendance_percentage": 75,
+    "late_arrival_counts_as_present": true,
+    "allow_student_corrections": true,
+    "current_session": "2025/2026",
+    "current_semester": "First"
+  }
+}

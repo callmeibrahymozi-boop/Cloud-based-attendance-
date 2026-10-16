@@ -1,0 +1,6 @@
+{
+  "name": "EduTrack Cloud - Attendance Management System",
+  "description": "A secure, cloud-based attendance management system for educational institutions with role-based dashboards for Admins, Lecturers, and Students, attendance tracking, and reporting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
