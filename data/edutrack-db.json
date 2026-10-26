@@ -208,6 +208,58 @@
       "status": "active",
       "created_at": "2026-10-16T17:44:09.127Z",
       "updated_at": "2026-10-16T17:44:09.127Z"
+    },
+    {
+      "user_id": "usr_y89ipv37",
+      "username": "freshstudent_1792338625719",
+      "password_hash": "$2b$10$wuqlgsFVdqkniU.UXRD0jOITIm8ZoL.IpzQqMvcFI9nNzCLHnpGvO",
+      "role": "student",
+      "email": "fresh_1792338625719@university.edu",
+      "full_name": "Fresh Student 1792338625719",
+      "matric_no": "ENG/9211",
+      "department": "Computer Engineering",
+      "status": "active",
+      "created_at": "2026-10-18T15:50:25.887Z",
+      "updated_at": "2026-10-18T15:50:25.887Z"
+    },
+    {
+      "user_id": "usr_b03jwf3u",
+      "username": "teststudent_1792338687729",
+      "password_hash": "$2b$10$iSGm7JINI6akEtDQhqU0J.vA3S65AUQ9TmgCrOB2gCB2p0qRoicDu",
+      "role": "student",
+      "email": "student_1792338687729@university.edu",
+      "full_name": "Test Student 1792338687729",
+      "matric_no": "ENG/9955",
+      "department": "Computer Engineering",
+      "status": "active",
+      "created_at": "2026-10-18T15:51:27.876Z",
+      "updated_at": "2026-10-18T15:51:27.876Z"
+    },
+    {
+      "user_id": "usr_eqida12o",
+      "username": "student_1792338832418",
+      "password_hash": "$2b$10$c3kMmvS.py/U0tooaffWhOnIZ3Azh0mKCfrDe.2QGFccT6WgZNqRy",
+      "role": "student",
+      "email": "std_1792338832418@university.edu",
+      "full_name": "Verified Student 1792338832418",
+      "matric_no": "CSC/1418",
+      "department": "Computer Science",
+      "status": "active",
+      "created_at": "2026-10-18T15:53:52.582Z",
+      "updated_at": "2026-10-18T15:53:52.582Z"
+    },
+    {
+      "user_id": "usr_p0ot40lj",
+      "username": "student_1792338844983",
+      "password_hash": "$2b$10$VBGFvicJVtOhbm94njS0Uefg.BIrvCZkjhR0enq2gu.cYJx1XQ7dK",
+      "role": "student",
+      "email": "std_1792338844983@university.edu",
+      "full_name": "Verified Student 1792338844983",
+      "matric_no": "CSC/5983",
+      "department": "Computer Science",
+      "status": "active",
+      "created_at": "2026-10-18T15:54:05.163Z",
+      "updated_at": "2026-10-18T15:54:05.163Z"
     }
   ],
   "departments": [
@@ -455,6 +507,46 @@
       "session": "2025/2026",
       "semester": "First",
       "enrolled_at": "2026-10-16T09:45:56.026Z"
+    },
+    {
+      "enrolment_id": "enr_5gytcq7o",
+      "student_id": "usr_b03jwf3u",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-18T15:51:27.891Z"
+    },
+    {
+      "enrolment_id": "enr_zwtkk0v1",
+      "student_id": "usr_b03jwf3u",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-18T15:51:27.895Z"
+    },
+    {
+      "enrolment_id": "enr_wevsi1gk",
+      "student_id": "usr_eqida12o",
+      "course_id": "crs_csc401",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-18T15:53:52.590Z"
+    },
+    {
+      "enrolment_id": "enr_ol6lzjtq",
+      "student_id": "usr_p0ot40lj",
+      "course_id": "crs_sen405",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-18T15:54:05.180Z"
+    },
+    {
+      "enrolment_id": "enr_5xc1qzn9",
+      "student_id": "usr_p0ot40lj",
+      "course_id": "crs_csc303",
+      "session": "2025/2026",
+      "semester": "First",
+      "enrolled_at": "2026-10-18T15:54:05.181Z"
     }
   ],
   "attendance": [
@@ -1121,6 +1213,106 @@
     }
   ],
   "audit_logs": [
+    {
+      "user_id": "usr_p0ot40lj",
+      "username": "student_1792338844983",
+      "role": "student",
+      "action": "STUDENT_DROPPED_COURSE",
+      "details": "Student student_1792338844983 dropped course CSC 401",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_hnb9k8yz",
+      "timestamp": "2026-10-18T15:54:05.185Z"
+    },
+    {
+      "user_id": "usr_p0ot40lj",
+      "username": "student_1792338844983",
+      "role": "student",
+      "action": "STUDENT_BULK_REGISTRATION",
+      "details": "Student Verified Student 1792338844983 bulk-registered for 2 courses: SEN 405, CSC 303",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_vcvkzd3z",
+      "timestamp": "2026-10-18T15:54:05.181Z"
+    },
+    {
+      "user_id": "usr_p0ot40lj",
+      "username": "student_1792338844983",
+      "role": "student",
+      "action": "STUDENT_SELF_REGISTRATION",
+      "details": "Student Verified Student 1792338844983 (CSC/5983) registered for CSC 401: Advanced Database Systems",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_1ki6un19",
+      "timestamp": "2026-10-18T15:54:05.175Z"
+    },
+    {
+      "user_id": "usr_p0ot40lj",
+      "username": "student_1792338844983",
+      "role": "student",
+      "action": "STUDENT_ACCOUNT_CREATED",
+      "details": "New student Verified Student 1792338844983 (CSC/5983) created account",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_lsv472vg",
+      "timestamp": "2026-10-18T15:54:05.165Z"
+    },
+    {
+      "user_id": "usr_eqida12o",
+      "username": "student_1792338832418",
+      "role": "student",
+      "action": "STUDENT_SELF_REGISTRATION",
+      "details": "Student Verified Student 1792338832418 (CSC/1418) registered for CSC 401: Advanced Database Systems",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_gc4vbxu5",
+      "timestamp": "2026-10-18T15:53:52.590Z"
+    },
+    {
+      "user_id": "usr_eqida12o",
+      "username": "student_1792338832418",
+      "role": "student",
+      "action": "STUDENT_ACCOUNT_CREATED",
+      "details": "New student Verified Student 1792338832418 (CSC/1418) created account",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_muf90lbo",
+      "timestamp": "2026-10-18T15:53:52.583Z"
+    },
+    {
+      "user_id": "usr_b03jwf3u",
+      "username": "teststudent_1792338687729",
+      "role": "student",
+      "action": "STUDENT_ENROLLED",
+      "details": "Enrolled student ENG/9955 into SEN 405",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_ievhh1ch",
+      "timestamp": "2026-10-18T15:51:27.895Z"
+    },
+    {
+      "user_id": "usr_b03jwf3u",
+      "username": "teststudent_1792338687729",
+      "role": "student",
+      "action": "STUDENT_SELF_REGISTRATION",
+      "details": "Student Test Student 1792338687729 (ENG/9955) registered for CSC 401: Advanced Database Systems",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_uqlo2r5x",
+      "timestamp": "2026-10-18T15:51:27.891Z"
+    },
+    {
+      "user_id": "usr_b03jwf3u",
+      "username": "teststudent_1792338687729",
+      "role": "student",
+      "action": "STUDENT_ACCOUNT_CREATED",
+      "details": "New student Test Student 1792338687729 (ENG/9955) created account",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_czqvxzez",
+      "timestamp": "2026-10-18T15:51:27.877Z"
+    },
+    {
+      "user_id": "usr_y89ipv37",
+      "username": "freshstudent_1792338625719",
+      "role": "student",
+      "action": "STUDENT_ACCOUNT_CREATED",
+      "details": "New student Fresh Student 1792338625719 (ENG/9211) created account",
+      "ip_address": "127.0.0.1",
+      "log_id": "log_73m4np79",
+      "timestamp": "2026-10-18T15:50:25.890Z"
+    },
     {
       "user_id": "usr_lecturer_1",
       "username": "dr_okonkwo",

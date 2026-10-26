@@ -137,6 +137,7 @@ export const StudentCoursesPage: React.FC = () => {
     return matchesSearch && matchesDept;
   });
 
+  const departments = Array.from(new Set(availableCourses.map((c) => c.department).filter(Boolean))).sort();
   const unregisteredCount = availableCourses.filter((c) => !c.is_registered).length;
   const totalRegisteredUnits = myCourses.reduce((acc, c) => acc + (c.credit_unit || 0), 0);
 
@@ -237,10 +238,11 @@ export const StudentCoursesPage: React.FC = () => {
                 className="text-xs border border-slate-300 rounded-lg p-2 bg-white w-full sm:w-auto"
               >
                 <option value="">All Departments</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Software Engineering">Software Engineering</option>
-                <option value="Cyber Security">Cyber Security</option>
-                <option value="Information Technology">Information Technology</option>
+                {departments.map((dept) => (
+                  <option key={dept} value={dept}>
+                    {dept}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

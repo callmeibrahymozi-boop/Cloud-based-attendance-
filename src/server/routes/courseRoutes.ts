@@ -58,7 +58,20 @@ router.get('/student/available', requireRole(['student']), (req: AuthRequest, re
   return res.json({
     success: true,
     courses: enriched,
+    available_courses: enriched,
     total_registered: studentEnrolments.length,
+  });
+});
+
+// GET /api/courses/student/enrolled - List enrolled courses for the logged-in student
+router.get(['/student/enrolled', '/student/my-courses'], requireRole(['student']), (req: AuthRequest, res: Response) => {
+  const studentId = req.user!.user_id;
+  const enrolledCourses = db.getCoursesForStudent(studentId);
+  return res.json({
+    success: true,
+    courses: enrolledCourses,
+    enrolled_courses: enrolledCourses,
+    total_enrolled: enrolledCourses.length,
   });
 });
 
